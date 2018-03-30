@@ -13,15 +13,17 @@ service.interceptors.request.use(config => {
   }
   return config
 }, error => {
-  console.log(error)
   Promise.reject(error)
 })
 
-service.interceptors.response.use(
-  response => response,
-  error => {
-    console.log('err' + error)
-    return Promise.reject(error)
-  })
+service.interceptors.response.use(response => {
+  if (process.env.NODE_ENV === 'development') {
+    console.log(response)
+    return response.data
+  }
+  return response
+}, error => {
+  return Promise.reject(error)
+})
 
 export default service

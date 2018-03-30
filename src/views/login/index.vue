@@ -48,10 +48,15 @@
       handleSubmit(name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
-              this.$Message.success('登录成功!')
-              this.$router.push('/')
-            }).catch(() => {
+            this.$store.dispatch('LoginByUsername', this.loginForm).then((res) => {
+              if (res.status === 0) {
+                this.$Message.success(res.msg)
+                this.$router.push('/')
+              } else {
+                this.$Message.error(res.msg)
+              }
+            }).catch((error) => {
+              console.log(error)
               this.loading = false
             })
           } else {
