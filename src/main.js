@@ -3,19 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'iview/dist/styles/iview.css'
-
-import { MenuGroup, Menu, Submenu, Icon, MenuItem, Tooltip, Dropdown , DropdownItem, DropdownMenu} from 'iview'
-
-Vue.component('MenuGroup', MenuGroup)
-Vue.component('Menu', Menu)
-Vue.component('MenuItem', MenuItem)
-Vue.component('Icon', Icon)
-Vue.component('Submenu', Submenu)
-Vue.component('Dropdown', Dropdown)
-Vue.component('DropdownItem', DropdownItem)
-Vue.component('DropdownMenu', DropdownMenu)
-Vue.component('Tooltip', Tooltip)
+import store from './store'
+import './permission'
+import './assets/styles/layout.less'
+import './components/iview'
 
 Vue.config.productionTip = false
 
@@ -23,6 +14,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: {App},
   template: '<App/>'
 })
