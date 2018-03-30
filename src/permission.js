@@ -1,5 +1,7 @@
 import router from './router'
 import NProgress from 'nprogress'
+import store from './store'
+import {Message} from 'iview'
 import 'nprogress/nprogress.css'
 import {getToken} from '@/utils/auth'
 
@@ -14,6 +16,11 @@ router.beforeEach((to, from, next) => {
       next({path: '/'})
       NProgress.done()
     } else {
+      if (store.getters.userName.length === 0) {
+        store.dispatch('GetUserInfo').then(res => {
+        }).catch(() => {
+        })
+      }
       next()
     }
   } else {

@@ -13,7 +13,7 @@
         </Form>
       </div>
       <div slot="footer">
-        <Button type="primary" size="large" long @click="handleSubmit('loginForm')">登录</Button>
+        <Button type="primary" size="large" long @click="handleSubmit('loginForm')" :loading="loginLoading">登录</Button>
         <Button type="success" size="large" style="margin-top: 15px">注册</Button>
       </div>
     </Modal>
@@ -25,6 +25,7 @@
     name: 'login',
     data() {
       return {
+        loginLoading: false,
         loginForm: {
           userName: '',
           password: ''
@@ -48,16 +49,13 @@
       handleSubmit(name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
+            this.loginLoading = true
             this.$store.dispatch('LoginByUsername', this.loginForm).then((res) => {
-              if (res.status === 0) {
-                this.$Message.success(res.msg)
-                this.$router.push('/')
-              } else {
-                this.$Message.error(res.msg)
-              }
+              this.$Message.success(res.msg)
+              this.$router.push('/')
             }).catch((error) => {
-              console.log(error)
-              this.loading = false
+              this.$Message.error(error)
+              this.loginLoading = false
             })
           } else {
             this.$Message.error('表单验证失败!')

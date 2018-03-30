@@ -8,8 +8,8 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(config => {
-  if (store.getters.token) {
-    config.headers['authoration'] = getToken()
+  if (store.getters.userName.length !== 0) {
+    config.headers['authorization'] = getToken()
   }
   return config
 }, error => {

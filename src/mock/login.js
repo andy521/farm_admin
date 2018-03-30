@@ -1,4 +1,4 @@
-import { param2Obj } from '@/utils'
+import {param2Obj} from '@/utils'
 
 const userMap = {
   sysadmin: {
@@ -30,7 +30,7 @@ export default {
     }
   },
   getUserInfo: config => {
-    const { token } = param2Obj(config.url)
+    const {token} = param2Obj(config.url)
     if (userMap[token]) {
       return userMap[token]
     } else {
