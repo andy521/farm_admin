@@ -12,7 +12,7 @@ router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
     if (to.path === '/login') {
-      next({ path: '/' })
+      next({ path: '' })
       NProgress.done()
     } else {
       // 拉取 用户信息
@@ -24,35 +24,15 @@ router.beforeEach((to, from, next) => {
       // 拉取 菜单信息
       if (store.getters.permission_routers.length === 0) {
         store.dispatch('GenerateRoutes').then(() => {
-          // 判断权限
-          if (store.getters.permission_routers.some(item => to.path === item.resourceUrl)) {
-            next()
-          } else {
-            next('/404')
-          }
+          next({ ...to, replace: true })
         })
       } else {
         next()
         NProgress.done()
       }
-
-      //   }).catch(() => {
-      //   })
-      // } else {
-      //   // 判断权限
-      //   if (store.getters.permission_routers.some(item => to.path === item.resourceUrl)) {
-      //     next()
-      //   } else {
-      //     if (whiteList.indexOf(to.path) !== -1) {
-      //       next()
-      //     } else {
-      //       next('/404')
-      //     }
-      //   }
-      // }
     }
   } else {
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (whiteList.indexOf(to.path) !== -1 && to.path !== '/404') {
       next()
     } else {
       next('/login')

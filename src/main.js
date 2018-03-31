@@ -7,7 +7,7 @@ import store from './store'
 import './permission'
 import './assets/styles/layout.less'
 import './components/iview'
-import './mock'
+// import './mock'
 
 Vue.config.productionTip = false
 

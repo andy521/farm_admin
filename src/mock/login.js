@@ -3,7 +3,7 @@ export default {
     const { userName } = JSON.parse(config.body)
     if (userName === 'sysadmin') {
       return {
-        token: 'token',
+        token: 'token1',
         msg: '登入成功',
         status: 0
       }

@@ -10,28 +10,39 @@ Vue.use(Router)
 
 export const constantRouterMap = [
   {
-    path: '/',
-    component: Layout
-  },
-  {
-    path: '/index',
-    component: _import('info/index')
-  },
-  {
     path: '/login',
     component: _import('login/index')
   },
   {
-    path: '/users',
-    component: _import('users/index')
-  },
-  {
-    path: '*',
-    component: _import('404/index')
+    path: '',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [
+      {
+        path: '/dashboard',
+        component: _import('dashboard/index')
+      },
+      {
+        path: '/users',
+        component: _import('users/index')
+      },
+      {
+        path: '/resources',
+        component: _import('resources/index')
+      },
+      {
+        path: '/roles',
+        component: _import('roles/index')
+      },
+      {
+        path: '*',
+        component: _import('errorPage/404')
+      }
+    ]
   }
 ]
 
 export default new Router({
-  scrollBehavior: () => ({y: 0}),
+  scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })

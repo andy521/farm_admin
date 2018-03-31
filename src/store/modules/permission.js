@@ -15,7 +15,7 @@ const permission = {
         getAsyncRouter().then(response => {
           if (response.status === 0) {
             commit('SET_ROUTERS', response.data)
-            resolve()
+            resolve(response.data)
           } else {
             reject(response.msg)
           }
