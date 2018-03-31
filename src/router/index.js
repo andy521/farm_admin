@@ -8,16 +8,30 @@ import Layout from '@/views/layout/Layout'
 
 Vue.use(Router)
 
+export const constantRouterMap = [
+  {
+    path: '/',
+    component: Layout
+  },
+  {
+    path: '/index',
+    component: _import('info/index')
+  },
+  {
+    path: '/login',
+    component: _import('login/index')
+  },
+  {
+    path: '/users',
+    component: _import('users/index')
+  },
+  {
+    path: '*',
+    component: _import('404/index')
+  }
+]
+
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Layout',
-      component: Layout
-    },
-    {
-      path: '/login',
-      component: _import('login/index')
-    }
-  ]
+  scrollBehavior: () => ({y: 0}),
+  routes: constantRouterMap
 })

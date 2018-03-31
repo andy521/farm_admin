@@ -1,30 +1,22 @@
-import {param2Obj} from '@/utils'
-
-const userMap = {
-  sysadmin: [
-    {
-      resourceUrl: '/info'
-    },
-    {
-      resourceUrl: '/roles/role'
-    }
-  ],
-  editor: [
-    {
-      resourceUrl: '/info'
-    }
-  ]
-}
+const asyncRouterMap = [
+  {
+    resourceUrl: '/info',
+    resourceName: '用户信息',
+    status: 0
+  },
+  {
+    resourceUrl: '/index',
+    resourceName: '用户信息',
+    status: 0
+  }
+]
 
 export default {
-  getMenu: config => {
-    const {token} = param2Obj(config.url)
-    if (userMap[token]) {
-      return userMap[token]
-    } else {
-      return {
-        status: 400
-      }
+  getMenu: () => {
+    return {
+      data: asyncRouterMap,
+      msg: '获取成功',
+      status: 0
     }
   }
 }

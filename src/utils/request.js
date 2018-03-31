@@ -1,6 +1,5 @@
 import axios from 'axios'
-import store from '@/store'
-import {getToken} from '@/utils/auth'
+import { getToken } from '@/utils/auth'
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -8,9 +7,7 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(config => {
-  if (store.getters.userName.length !== 0) {
-    config.headers['authorization'] = getToken()
-  }
+  config.headers['authorization'] = getToken()
   return config
 }, error => {
   Promise.reject(error)

@@ -21,9 +21,11 @@
 </template>
 
 <script>
+  import { loginByUsername } from '@/api/login'
+  import { setToken } from '@/utils/auth'
   export default {
     name: 'login',
-    data() {
+    data () {
       return {
         loginLoading: false,
         loginForm: {
@@ -46,12 +48,17 @@
     },
     methods: {
       // login
-      handleSubmit(name) {
+      handleSubmit (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
             this.loginLoading = true
-            this.$store.dispatch('LoginByUsername', this.loginForm).then((res) => {
-              this.$Message.success(res.msg)
+            loginByUsername(this.loginForm).then(response => {
+              this.$Message.success(response.msg)
+              if (response.status === 0) {
+                setToken(response.token)
+              } else {
+                this.$Message.success(response.msg)
+              }
               this.$router.push('/')
             }).catch((error) => {
               this.$Message.error(error)

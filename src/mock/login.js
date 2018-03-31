@@ -1,40 +1,23 @@
-import {param2Obj} from '@/utils'
-
-const userMap = {
-  sysadmin: {
-    token: 'sysadmin',
-    introduction: '超级管理员',
-    userName: 'sysadmin'
-  },
-  editor: {
-    token: 'editor',
-    introduction: '普通管理员',
-    userName: 'Normal Editor'
-  }
-}
-
 export default {
   loginByUsername: config => {
     const {userName} = JSON.parse(config.body)
-    const userInfo = userMap[userName]
-    if (userInfo) {
+    if (userName === 'sysadmin') {
       return {
-        token: userInfo['token'],
+        token: 'token',
         msg: '登入成功',
         status: 0
       }
     }
     return {
-      status: 400,
-      msg: '登入失败'
+      msg: '登入失败',
+      status: 1
     }
   },
   getUserInfo: config => {
-    const {token} = param2Obj(config.url)
-    if (userMap[token]) {
-      return userMap[token]
-    } else {
-      return false
+    return {
+      userName: 'sysadmin',
+      msg: '获取成功',
+      status: 0
     }
   }
 }

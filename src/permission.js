@@ -1,13 +1,12 @@
 import router from './router'
 import NProgress from 'nprogress'
 import store from './store'
-import {Message} from 'iview'
 import 'nprogress/nprogress.css'
-import {getToken} from '@/utils/auth'
+import { getToken } from '@/utils/auth'
 
 NProgress.configure({showSpinner: false})
 
-const whiteList = ['/login', '/authredirect']
+const whiteList = ['/', '/login', '/404']
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
@@ -16,12 +15,34 @@ router.beforeEach((to, from, next) => {
       next({path: '/'})
       NProgress.done()
     } else {
+      // 拉去 用户信息
       if (store.getters.userName.length === 0) {
-        store.dispatch('GetUserInfo').then(res => {
+        store.dispatch('GetUserInfo').then(() => {
         }).catch(() => {
         })
       }
-      next()
+      // 拉去菜单信息
+      if (store.getters.permission_routers.length === 0) {
+        store.dispatch('GenerateRoutes').then(() => {
+          // 判断权限
+          if (store.getters.permission_routers.some(item => to.path === item.resourceUrl)) {
+            next()
+          }
+        }).catch(() => {
+        })
+      } else {
+        // 判断权限
+        if (store.getters.permission_routers.some(item => to.path === item.resourceUrl)) {
+          next()
+        } else {
+          if (whiteList.indexOf(to.path) !== -1) {
+            next()
+          } else {
+            next('/404')
+          }
+        }
+      }
+      NProgress.done()
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {
