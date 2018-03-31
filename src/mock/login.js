@@ -1,6 +1,6 @@
 export default {
   loginByUsername: config => {
-    const {userName} = JSON.parse(config.body)
+    const { userName } = JSON.parse(config.body)
     if (userName === 'sysadmin') {
       return {
         token: 'token',
@@ -13,7 +13,7 @@ export default {
       status: 1
     }
   },
-  getUserInfo: config => {
+  getUserInfo: () => {
     return {
       userName: 'sysadmin',
       msg: '获取成功',

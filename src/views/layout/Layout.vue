@@ -25,30 +25,28 @@
 </template>
 
 <script>
-  import NavBar from './components/navbar/NavBar'
-  import THeader from './components/header/THeader'
-  import { mapGetters } from 'vuex'
+import NavBar from "./components/navbar/NavBar";
+import THeader from "./components/header/THeader";
+import { mapGetters } from "vuex";
 
-  export default {
-    name: 'layout',
-    components: {
-      THeader,
-      NavBar
-    },
-    methods: {
-      selectFn (path) {
-        this.$router.push({
-          path: path
-        })
-      }
-    },
-    computed: {
-      ...mapGetters([
-        'permission_routers'
-      ]),
-      isCollapse () {
-        return !this.sidebar.opened
-      }
+export default {
+  name: "layout",
+  components: {
+    THeader,
+    NavBar
+  },
+  methods: {
+    selectFn(path) {
+      this.$router.push({
+        path: path
+      });
+    }
+  },
+  computed: {
+    ...mapGetters(["permission_routers"]),
+    isCollapse() {
+      return !this.sidebar.opened;
     }
   }
+};
 </script>

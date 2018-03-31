@@ -15,7 +15,6 @@ service.interceptors.request.use(config => {
 
 service.interceptors.response.use(response => {
   if (process.env.NODE_ENV === 'development') {
-    console.log(response)
     return response.data
   }
   return response

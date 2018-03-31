@@ -5,11 +5,9 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
-  export default {
-    ...mapGetters([
-      'userName'
-    ])
-  }
+export default {
+  ...mapGetters(["userName"])
+};
 </script>

@@ -4,15 +4,14 @@
   </div>
 </template>
 <script>
-  export default {
-    name: 'navbar',
-    components: {},
-    data() {
-      return {}
-    },
-    computed: {
-      sidebar() {
-      }
-    }
+export default {
+  name: "navbar",
+  components: {},
+  data() {
+    return {};
+  },
+  computed: {
+    sidebar() {}
   }
+};
 </script>
