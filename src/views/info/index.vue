@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>{{userName}}</h1>
+    <h1>{{user_name}}</h1>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
-  ...mapGetters(["userName"])
-};
+  ...mapGetters(['user_name'])
+}
 </script>

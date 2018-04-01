@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './permission'
-import './assets/styles/layout.less'
 import './components/iview'
+import './assets/styles/layout.less'
+import './assets/styles/table.less'
+import './assets/styles/cover.less'
 // import './mock'
 
 Vue.config.productionTip = false

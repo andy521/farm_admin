@@ -1,3 +1,8 @@
+//全局变量
+@import './iview.less';
+
+@nav-width: 250px;
+
 .app-wrapper {
   position: fixed;
   top: 0;
@@ -8,15 +13,44 @@
   .side-wrapper {
     transition: all .28s ease-out;
     position: absolute;
-    width: 190px;
-    background: #1c2438;
+    width: @nav-width;
+    background: @menu-dark-title;
     top: 0;
     left: 0;
     bottom: 0;
     z-index: 99;
     overflow: hidden;
   }
+
+  .nav-wrapper {
+    height: 50px;
+    line-height: 50px;
+    margin-left: @nav-width;
+    background-color: #fafafa;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, .1);
+
+    .hamburger-container {
+      line-height: 50px;
+      height: 50px;
+      float: left;
+      padding: 0 10px;
+    }
+
+    .breadcrumb-container {
+      line-height: 50px;
+      height: 50px;
+      float: left;
+      padding: 0 10px;
+    }
+    .user-container {
+      line-height: 50px;
+      height: 50px;
+      float: right;
+      padding: 0 20px;
+    }
+  }
   .main-wrapper {
-    margin-left: 180px
+    margin-left: @nav-width;
+    padding: 20px 20px;
   }
 }

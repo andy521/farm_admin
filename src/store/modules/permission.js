@@ -10,7 +10,7 @@ const permission = {
     }
   },
   actions: {
-    GenerateRoutes ({commit}) {
+    GenerateRoutes ({commit }) {
       return new Promise((resolve, reject) => {
         getAsyncRouter().then(response => {
           if (response.status === 0) {

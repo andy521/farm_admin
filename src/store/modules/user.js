@@ -4,7 +4,8 @@ const user = {
   state: {
     name: '',
     email: '',
-    status: 0,
+    avatar: '',
+    status: 0
   },
 
   mutations: {
@@ -16,6 +17,9 @@ const user = {
     },
     SET_STATUS: (state, status) => {
       state.status = status
+    },
+    SET_AVATAR: (state, avatar) => {
+      state.avatar = avatar
     }
   },
 
@@ -28,6 +32,7 @@ const user = {
             commit('SET_NAME', response.data.userName)
             commit('SET_EMAIL', response.data.email)
             commit('SET_STATUS', response.data.status)
+            commit('SET_AVATAR', response.data.avatar)
             resolve(response)
           } else {
             reject(response.msg)

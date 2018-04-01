@@ -1,7 +1,6 @@
 import Vue from 'vue'
-import 'iview/dist/styles/iview.css'
-
-import {Message} from 'iview'
+import '@/assets/styles/iview.less'
+import { Message } from 'iview'
 
 import {
   MenuGroup,
@@ -17,6 +16,20 @@ import {
   Button,
   Form,
   FormItem,
+  Page,
+  Table,
+  Tag,
+  Select,
+  ButtonGroup,
+  Option,
+  Avatar,
+  Layout,
+  Sider,
+  Content,
+  Header,
+  Card,
+  Breadcrumb,
+  BreadcrumbItem,
   Input
 } from 'iview'
 
@@ -35,3 +48,17 @@ Vue.component('Button', Button)
 Vue.component('Form', Form)
 Vue.component('FormItem', FormItem)
 Vue.component('Input', Input)
+Vue.component('Page', Page)
+Vue.component('Table', Table)
+Vue.component('Tag', Tag)
+Vue.component('Option', Option)
+Vue.component('Select', Select)
+Vue.component('ButtonGroup', ButtonGroup)
+Vue.component('Avatar', Avatar)
+Vue.component('Layout', Layout)
+Vue.component('Sider', Sider)
+Vue.component('Header', Header)
+Vue.component('Content', Content)
+Vue.component('Card', Card)
+Vue.component('Breadcrumb', Breadcrumb)
+Vue.component('BreadcrumbItem', BreadcrumbItem)

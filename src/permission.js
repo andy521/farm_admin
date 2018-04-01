@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
       NProgress.done()
     } else {
       // 拉取 用户信息
-      if (store.getters.userName.length === 0) {
+      if (store.getters.user_name.length === 0) {
         store.dispatch('GetUserInfo').then(() => {
         }).catch(() => {
         })
